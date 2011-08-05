@@ -174,7 +174,9 @@ $.widget("ui.multiselect", {
 		return clone;
 	},
 	_setSelected: function(item, selected) {
-		item.data('optionLink').attr('selected', selected);
+		var addedNode = item.data('optionLink').attr('selected', selected);
+		var parent = addedNode.parent();
+		addedNode.detach().appendTo (parent);
 
 		if (selected) {
 			var selectedItem = this._cloneWithData(item);
